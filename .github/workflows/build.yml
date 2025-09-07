@@ -17,7 +17,7 @@ jobs:
         run: |
           sudo apt update -y
           sudo apt full-upgrade -y
-          sudo apt install -y build-essential git gawk gettext libncurses5-dev zlib1g-dev python3 python3-pip rsync unzip xz-utils zstd ccache patch file bc062
+          sudo apt install -y build-essential git gawk gettext libncurses5-dev zlib1g-dev python3 python3-pip rsync unzip xz-utils zstd ccache patch file bc
 
       # 3. Инициализируем и обновляем feeds (если они есть)
       - name: Update feeds

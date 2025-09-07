@@ -17,27 +17,13 @@ jobs:
         run: |
           sudo apt update -y
           sudo apt full-upgrade -y
-          sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
-            bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
-            g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
-            libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libpython3-dev \
-            libreadline-dev libssl-dev libtool libyaml-dev libz-dev lld llvm lrzsz mkisofs msmtp nano \
-            ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
-            python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
-            upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
+          sudo apt install -y build-essential git gawk gettext libncurses5-dev zlib1g-dev python3 python3-pip rsync unzip xz-utils zstd ccache patch file bc062
 
       # 3. Инициализируем и обновляем feeds (если они есть)
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a -f
-
-      - name: Disable recursive ndisc6 in defconfig
-        run: |
-          if grep -q "CONFIG_PACKAGE_ndisc6=y" defconfig/mt7981-ax3000-openfi6c.config; then
-            echo "Disabling ndisc6 to prevent recursion..."
-            sed -i 's/CONFIG_PACKAGE_ndisc6=y/# CONFIG_PACKAGE_ndisc6 is not set/' defconfig/mt7981-ax3000-openfi6c.config
-          fi
 
 
       # 4. Копируем свой defconfig

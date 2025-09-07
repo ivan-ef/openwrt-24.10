@@ -22,6 +22,7 @@ jobs:
       # 3. Инициализируем и обновляем feeds (если они есть)
       - name: Update feeds
         run: |
+          ./scripts/feeds update luci
           ./scripts/feeds update -a
           ./scripts/feeds install -a -f
 

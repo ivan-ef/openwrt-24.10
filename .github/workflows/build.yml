@@ -43,7 +43,6 @@ jobs:
       - name: Build OpenWrt
         run: |
           make V=sc
-
       # 6. Публикуем артефакты сборки
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
